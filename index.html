@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>Meme Generator</title>
+  </head>
+  <body onload="init()">
+    <header class="main-header">
+      <div class="main-logo"><img src="" alt=""></div>
+      <nav>
+        <div class="nav-text flex">
+            <li><a class="gallery" blank="_targer" href="index.html">Gallery</a></li>
+            <li><a href="#about-container">About</a></li>
+        </div>
+    </nav>
+    </header>
+   
+    <div class ="editor-container" hidden>
+      <div class="canvas-container" >
+        <canvas height="400" width="400" id="my-canvas"></canvas>
+      </div>
+      <div class="meme-editor">
+        <div class="button-container">
+          <button onclick="onChangeFontSize('-')">
+            <img src="images/decrease font - icon.png">
+          </button>
+          <button onclick="onChangeFontSize('+')"><img src="images/increase font - icon.png"></button>
+    color: lightgrey;
+          <input oninput="onChangeFontColor()"class="font-color" type="color" id="font-color"name="font-color" value="#b39393" >
+          <button onclick="onDeleteTxtLine"> <img src="images/trash.png"></button></div>
+        <input oninput="getTxtFromUser()"type="text" class="user-txt" value="" placeholder="write a text">
+
+    </div>
+    </div>
+      <div class="image-gallery-container  ">
+      <div class="gallery-images"></div>
+  
+    </div>
+    <div id="about-container invisible">
+      <!-- <img src="images/me.jpeg" alt="my-photo"> -->
+      <div class=about-content>
+        <div class=about-header></div>
+        <div class="about-txt"></div>
+        <div class="social-media"></div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-container">
+        <img src="" alt="">
+      </div>
+    </footer>
+    <script src="js/mameController.js"></script>
+    <script src="js/memeService.js"></script>
+    <script src="js/galleryController.js"></script>
+    <script src="js/util.js"></script>
+  </body>
+</html>
