@@ -25,10 +25,23 @@ var gMeme = {
   lines: [
     {
       txt: "",
-      fontSize: 20,
-      align: "left",
-      color: "rgb(141, 156, 125)",
+      fontSize: 30,
+      align: "center",
+      color: "white",
+      txtBorderColor:'black',
+      fontFamily:'ariel',
+      posY:50
     },
+    {
+      txt: "",
+      fontSize: 30,
+      align: "center",
+      color: "white",
+      txtBorderColor:'black',
+      fontFamily:'ariel',
+      posY:350
+
+    }
   ],
 };
 
@@ -37,9 +50,10 @@ function getMeme() {
 }
 
 function updateGMeme(value, newValue) {
-  gMeme.lines[0][value] = newValue;
-  // debugger
-  console.log(gMeme.lines[0][value])
+  gMeme.lines[gMeme.selectedLineIdx][value] = newValue;
+  console.log(value,'value')
+  console.log(newValue,'newValue')
+  console.log(gMeme,'gMeme')
 }
 
 function setImg(id) {
@@ -47,5 +61,23 @@ gMeme.selectedImgId=id
 }
 
 function setMemeFontSize(size){
-  gMeme.lines[0].fontSize = size;
+  gMeme.lines[gMeme.selectedLineIdx].fontSize = size;
 }
+
+function setMemeAlignText(alignText){
+  gMeme.lines[0].align = alignText;
+  
+}
+
+function setFontFamily(fontFamily){
+  gMeme.lines[0].fontFamily = fontFamily;
+}
+
+function setAddLine(){
+ gMeme.selectedLineIdx++
+}
+
+
+
+
+

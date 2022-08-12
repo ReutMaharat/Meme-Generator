@@ -13,6 +13,7 @@
       <div class="main-logo"><img src="" alt=""></div>
       <nav>
         <div class="nav-text flex">
+          <h1> Meme Generator</h1>
             <li><a class="gallery" blank="_targer" href="index.html">Gallery</a></li>
             <li><a href="#about-container">About</a></li>
         </div>
@@ -20,27 +21,37 @@
     </header>
    
     <div class ="editor-container" hidden>
-      <div class="canvas-container" >
-        <canvas height="400" width="400" id="my-canvas"></canvas>
+      <div class="canvas-container"  >
+        <canvas height="400" width="400" id="my-canvas" style="text-align:center"></canvas>
       </div>
       <div class="meme-editor">
-        <div class="button-container">
-          <button onclick="onChangeFontSize('-')">
-            <img src="images/decrease font - icon.png">
-          </button>
-          <button onclick="onChangeFontSize('+')"><img src="images/increase font - icon.png"></button>
-    color: lightgrey;
-          <input oninput="onChangeFontColor()"class="font-color" type="color" id="font-color"name="font-color" value="#b39393" >
-          <button onclick="onDeleteTxtLine"> <img src="images/trash.png"></button></div>
         <input oninput="getTxtFromUser()"type="text" class="user-txt" value="" placeholder="write a text">
+        <div class="button-container">
+          <button onclick="onChangeFontSize('-')"><img src="images/decrease font - icon.png"></button>
+          <button onclick="onChangeFontSize('+')"><img src="images/increase font - icon.png"></button>
+          <input oninput="onChangeFontColor()"class="font-color" type="color" id="font-color"name="font-color" value="#b39393" >
+          <input oninput="onChangeTxtBorderColor()" class="border-txt-color" type="color" name="border-txt-color" value="#b39393">
+          <button onclick="onDeleteTxtLine()"> <img src="images/trash.png"></button></div>
+          <button onclick="onTextAlign('right')" class="text-align"><img src="images/align-to-right.png"></button>
+          <button onclick="onTextAlign('center')" class="text-align"><img src="images/center-text-alignment.png"></button>
+          <button onclick="onTextAlign('left')" class="text-align"><img src="images/align-to-left.png"></button>
+          <select class="font-family" onchange="onChangeFontFamily(this.value)" >
+            <option value="Ariel" style="font-family: Arial, Helvetica, sans-serif;">Ariel</option>
+            <option value=Fantasy style="font-family:fantasy;">Fantasy</option>
+            <option value=Cursive style="font-family:cursive;">Cursive</option>
+          </select>
+          <button onclick="onAddLine()" class="add-line"><img src="images/add.png"></button>
+          <a href="jpg" onclick="onDownloadMeme(this)" download="cool-canvas">Download</a>
+         
+
 
     </div>
     </div>
-      <div class="image-gallery-container  ">
+      <div class="image-gallery-container flex ">
       <div class="gallery-images"></div>
   
     </div>
-    <div id="about-container invisible">
+    <div id="about-container">
       <!-- <img src="images/me.jpeg" alt="my-photo"> -->
       <div class=about-content>
         <div class=about-header></div>
@@ -53,6 +64,7 @@
         <img src="" alt="">
       </div>
     </footer>
+    
     <script src="js/mameController.js"></script>
     <script src="js/memeService.js"></script>
     <script src="js/galleryController.js"></script>
