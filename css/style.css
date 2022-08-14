@@ -90,7 +90,7 @@ a > img {
 }
 
 .font-color {
-  background-image: url("images/paint-board-and-brush.png");
+  background-image: url("/images/paint-board-and-brush.png");
   background-size: 54px 49px;
   width: 55px;
   height: 50px;
