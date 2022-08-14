@@ -34,14 +34,17 @@
             <button onclick="onTextAlign('center')" class="text-align"><img src="images/center-text-alignment.png" /></button>
             <button onclick="onTextAlign('left')" class="text-align"><img src="images/align-to-left.png" /></button>
           </div>
-          <div class="button-container flex justify-space-between">
+          <div class="button-container flex justify-content-center">
             <input oninput="onChangeFontColor()"class="font-color"type="color"id="font-color"name="font-color"value="#b39393"/>
             <input oninput="onChangeTxtBorderColor()"class="border-txt-color"type="color"name="border-txt-color"value="#b39393"/>
+          </div>
+          <div class="button-container justify-space-between">
             <select class="font-family" onchange="onChangeFontFamily(this.value)">
               <option value="Ariel" style="font-family: Arial, Helvetica, sans-serif">Ariel</option>
               <option value="Fantasy" style="font-family: fantasy">Fantasy</option>
               <option value="Cursive" style="font-family: cursive">Cursive</option>
             </select>
+
           </div>
           <div class="download-button">
             <a href="jpg" onclick="onDownloadMeme(this)" download="cool-canvas">download</a>
