@@ -27,21 +27,29 @@ var gMeme = {
       txt: "",
       fontSize: 30,
       align: "center",
-      color: "white",
-      txtBorderColor:'black',
-      fontFamily:'ariel',
-      posY:50
+      color: "#FFFFFF",
+      txtBorderColor: "#000000",
+      fontFamily: "ariel",
+      posY: 50,
     },
     {
       txt: "",
       fontSize: 30,
       align: "center",
-      color: "white",
-      txtBorderColor:'black',
-      fontFamily:'ariel',
-      posY:350
-
-    }
+      color: "#FFFFFF",
+      txtBorderColor: "#000000",
+      fontFamily: "ariel",
+      posY: 350,
+    },
+    {
+      txt: "",
+      fontSize: 30,
+      align: "center",
+      color: "#FFFFFF",
+      txtBorderColor: "#000000",
+      fontFamily: "ariel",
+      posY: 200,
+    },
   ],
 };
 
@@ -51,33 +59,26 @@ function getMeme() {
 
 function updateGMeme(value, newValue) {
   gMeme.lines[gMeme.selectedLineIdx][value] = newValue;
-  console.log(value,'value')
-  console.log(newValue,'newValue')
-  console.log(gMeme,'gMeme')
 }
 
 function setImg(id) {
-gMeme.selectedImgId=id
+  gMeme.selectedImgId = id;
 }
 
-function setMemeFontSize(size){
+function setMemeFontSize(size) {
   gMeme.lines[gMeme.selectedLineIdx].fontSize = size;
 }
 
-function setMemeAlignText(alignText){
-  gMeme.lines[0].align = alignText;
-  
+function setMemeAlignText(alignText) {
+  gMeme.lines[gMeme.selectedLineIdx].align = alignText;
 }
 
-function setFontFamily(fontFamily){
-  gMeme.lines[0].fontFamily = fontFamily;
+function setFontFamily(fontFamily) {
+  gMeme.lines[gMeme.selectedLineIdx].fontFamily = fontFamily;
 }
 
-function setAddLine(){
- gMeme.selectedLineIdx++
+function setAddLine() {
+  if (gMeme.selectedLineIdx < 2) {
+    gMeme.selectedLineIdx++;
+  }
 }
-
-
-
-
-

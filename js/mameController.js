@@ -16,21 +16,25 @@ function renderMeme() {
   img.src = `images/${meme.selectedImgId}.jpg`;
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
-    meme.lines.forEach((line,idx)=>{
-    gCtx.font =meme.lines[idx].fontSize + "px " +meme.lines[idx].fontFamily + ", sans-serif";
-    gCtx.fillStyle = meme.lines[idx].color;
-    gCtx.textAlign = meme.lines[idx].align;
-    gCtx.lineWidth = 5;
-    gCtx.strokeText(meme.lines[idx].txt, 200, meme.lines[idx].posY);
-    gCtx.strokeStyle = meme.lines[idx].txtBorderColor;
-    gCtx.fillText(meme.lines[idx].txt, 200, meme.lines[idx].posY);
-  })
-}
+    meme.lines.forEach((line, idx) => {
+      gCtx.font =
+        meme.lines[idx].fontSize +
+        "px " +
+        meme.lines[idx].fontFamily +
+        ", sans-serif";
+      gCtx.fillStyle = meme.lines[idx].color;
+      gCtx.textAlign = meme.lines[idx].align;
+      gCtx.lineWidth = 5;
+      gCtx.strokeStyle = meme.lines[idx].txtBorderColor;
+      gCtx.strokeText(meme.lines[idx].txt, 200, meme.lines[idx].posY);
+      gCtx.fillText(meme.lines[idx].txt, 200, meme.lines[idx].posY);
+    });
+  };
 }
 
 function getTxtFromUser() {
   elText = document.querySelector(".user-txt").value;
-  console.log(elText,'text')
+  console.log(elText, "text");
   updateGMeme("txt", elText);
   renderMeme();
 }
@@ -44,7 +48,8 @@ function onChangeFontColor() {
 }
 
 function onChangeFontSize(operator) {
-  let fontSize = gMeme.lines[0].fontSize;
+  var meme = getMeme();
+  let fontSize = meme.lines[meme.selectedLineIdx].fontSize;
   if (operator === "-") {
     fontSize--;
   } else {
@@ -63,7 +68,6 @@ function onClickImg(id) {
   elGallery.style.display = "none";
   setImg(id);
   renderMeme();
-  console.log(id, "hhh");
 }
 
 function onTextAlign(alignment) {
@@ -92,21 +96,39 @@ function onChangeFontFamily(elFontFamily) {
 }
 
 function onDeleteTxtLine() {
-var meme = getMeme()
-//  meme.lines[meme.selectedLineIdx].txt = ''
- document.querySelector(".user-txt").value = "";
- updateGMeme('txt','')
- if(meme.selectedLineIdx === 0){
-  renderMeme()
-   return
+  var meme = getMeme();
+  document.querySelector(".user-txt").value = "";
+  updateGMeme("txt", "");
+  if (meme.selectedLineIdx === 0) {
+    renderMeme();
+    return;
   }
- meme.selectedLineIdx--
- console.log(meme.selectedLineIdx)
- renderMeme();
+  meme.selectedLineIdx--;
+  console.log(meme.selectedLineIdx);
+  renderMeme();
 }
 
-function onAddLine() { 
-  document.querySelector('.user-txt').value=''
-  setAddLine()
-  
+function onAddLine() {
+  setAddLine();
+  document.querySelector(".user-txt").value = "";
+  renderMeme();
+}
+
+function onSwitchLine() {
+  var meme = getMeme();
+  if (meme.selectedLineIdx < meme.lines.length - 1) meme.selectedLineIdx++;
+  else meme.selectedLineIdx = 0;
+  document.querySelector(".user-txt").value =
+    meme.lines[meme.selectedLineIdx].txt;
+  document.querySelector(".font-color").value =
+    meme.lines[meme.selectedLineIdx].color;
+  renderMeme();
+}
+
+function openNav(elButton) {
+  var elNav = document.querySelector(".nav-text");
+  elNav.classList.toggle("menu-is-clicked");
+  if (elNav.classList[1] === "menu-is-clicked") {
+    elButton.innerHTML = '<i class="fas fa-times">X</i>';
+  } else elButton.innerHTML = "☰";
 }
